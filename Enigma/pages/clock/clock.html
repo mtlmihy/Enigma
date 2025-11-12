@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+<a href="#" class="switcher"></a>
+  <div class="screen glitch">
+    <div class="clock is-off">
+      <span data-time="" class="time"></span>
+    </div>
+    <div class="figure"></div>
+    <div class="figure-mask"></div>
+  </div>
+
+  <section>
+    <div>
+      <h1>Les règles</h1>
+    </div>
+    <div>
+      <p id="lesRegles :">
+        Pour réussir cette aventure, vous devez résoudre l’intégralité des énigmes avant la fin du compte à rebours.
+        Chaque réponse peut être trouvée de manière entièrement virtuelle, rien ne se cache dans le monde réel.
+        Conservez précieusement toutes les réponses découvertes, car elles vous seront indispensables tout au long
+        de votre progression dans Enigma.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <div>
+      <h1>Le déroulement</h1>
+    </div>
+    <div>
+      <p id="leDeroulement :">
+        L’aventure Enigma se compose de 12 énigmes à la difficulté croissante.
+        Pour triompher, vous devrez valider chacune d’entre elles et faire preuve d’imagination, de logique et de ruse.
+        Chaque énigme représente un palier à franchir, un pas de plus vers la vérité cachée.
+        Plus vous avancerez, plus le mystère s’épaissira… jusqu’à enfin découvrir le secret d’Enigma.
+      </p>
+    </div>
+  </section>
+ <section>
+  <a href="../Enigmes/1/index.html" class="start-btn">Commencer ?</a>
+</section>
+
+  <footer>
+    © 2030 - Enigma
+  </footer>
+
+  <footer>
+    
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+ <script>
+    $(document).ready(function () {
+      function second_passed() {
+        $('.clock').removeClass('is-off');
+      }
+      setTimeout(second_passed, 2000);
+      
+      $('.switcher').on('click', function(e) {
+        e.preventDefault();
+        $('.screen').toggleClass('glitch');
+      });
+      
+      // Date cible : 1 novembre 2030
+      var targetDate = new Date('November 1, 2030 00:00:00').getTime();
+      
+      setInterval(function() {
+        var now = new Date().getTime();
+        var distance = targetDate - now;
+        
+        // Calculs pour jours, heures, minutes, secondes
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        // Format avec zéros devant si nécessaire
+        var countdown = days + 'j ' + 
+                       (hours < 10 ? '0' : '') + hours + ':' + 
+                       (minutes < 10 ? '0' : '') + minutes + ':' + 
+                       (seconds < 10 ? '0' : '') + seconds;
+        
+        // Si le compte à rebours est terminé
+        if (distance < 0) {
+          countdown = "TERMINÉ";
+        }
+        
+        $('.time').html(countdown);
+        $('.time').attr('data-time', countdown);
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
