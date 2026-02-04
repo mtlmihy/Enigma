@@ -9,54 +9,37 @@
       @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap");
 
       body {
-        background: linear-gradient(135deg, #4a0e4e, #8a1d5c, #f39c12);
-        background-size: 200% 200%;
-        animation: gradientShift 15s ease infinite;
-        color: #f0f0f0;
-        font-family: "Titillium Web", sans-serif;
+        background: radial-gradient(circle at top left, #060606, #000);
+        color: #00aeff;
+        font-family: "Courier New", monospace;
+        padding: 40px;
+        overflow-x: hidden;
         display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: center;
+        align-items: center;
         height: 100vh;
-        text-align: center;
-        overflow: hidden;
-      }
-      @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
+        margin: 0;
       }
 
       .container {
-        background: rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        padding: 30px 40px;
-        border-radius: 20px;
-        border: 1px solid rgba(243, 156, 18, 0.3);
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-          0 0 25px rgba(243, 156, 18, 0.1);
-        max-width: 400px;
-        transition: all 0.3s ease;
-      }
-
-      .container:hover {
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
-          0 0 35px rgba(243, 156, 18, 0.3);
+        border: 2px solid #00aeff;
+        border-radius: 10px;
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.85);
+        box-shadow: 0 0 20px #00aeff;
+        max-width: 800px;
+        margin: auto;
+        line-height: 1.6;
+        font-size: 16px;
+        color: #c2fcd3;
+        text-align: center;
       }
 
       h1 {
         margin-bottom: 15px;
-        color: #f39c12;
+        color: #00aeff;
         font-weight: 700;
-        text-shadow: 0 0 5px #f39c12, 0 0 10px rgba(243, 156, 18, 0.7);
+        text-shadow: 0 0 5px #00aeff, 0 0 10px rgba(0, 255, 153, 0.7);
       }
 
       p {
@@ -66,50 +49,48 @@
       }
 
       input {
-        padding: 12px;
-        border-radius: 8px;
-        border: 2px solid transparent;
-        border-bottom: 2px solid #f39c12;
-        margin-top: 10px;
+        background-color: rgba(0, 255, 153, 0.1);
+        border: 2px solid #00aeff;
+        border-radius: 5px;
+        padding: 12px 20px;
+        color: #00aeff;
+        font-family: "Courier New", monospace;
+        font-size: 16px;
+        width: 300px;
         text-align: center;
-        font-size: 1.1rem;
-        width: 150px;
-        background: rgba(255, 255, 255, 0.05);
-        color: #ffffff;
-        font-family: "Titillium Web", sans-serif;
-        transition: all 0.3s ease;
+        outline: none;
+        transition: all 0.3s;
+        box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
       }
 
       input:focus {
-        outline: none;
-        background: rgba(255, 255, 255, 0.1);
-        border: 2px solid #f39c12;
-        box-shadow: 0 0 10px rgba(243, 156, 18, 0.5);
+        background-color: rgba(0, 255, 153, 0.2);
+        box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
+        transform: scale(1.05);
       }
 
       button {
         margin-top: 15px;
-        padding: 12px 25px;
-        border: none;
-        border-radius: 8px;
-        background: #f39c12;
-        color: #4a0e4e;
-        font-weight: 700;
-        font-size: 1rem;
-        font-family: "Titillium Web", sans-serif;
+        background-color: rgba(0, 255, 153, 0.2);
+        border: 2px solid #00aeff;
+        border-radius: 5px;
+        padding: 12px 30px;
+        color: #00aeff;
+        font-family: "Courier New", monospace;
+        font-size: 16px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        transform: perspective(1px) translateZ(0);
+        transition: all 0.3s;
+        box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
       }
 
       button:hover {
-        background: #f1c40f;
-        box-shadow: 0 0 15px rgba(243, 156, 18, 0.7);
-        transform: scale(1.05);
+        background-color: rgba(0, 255, 153, 0.4);
+        box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
+        transform: translateY(-2px);
       }
 
       button:active {
-        transform: scale(0.98);
+        transform: translateY(0);
       }
 
       #result {
@@ -118,7 +99,10 @@
         font-weight: bold;
         min-height: 1.5rem;
         transition: all 0.3s ease;
+        color: #00aeff;
+        text-shadow: 0 0 10px #00aeff;
       }
+
       #result[style*="color: rgb(121, 255, 159)"] {
         text-shadow: 0 0 8px #79ff9f;
       }
