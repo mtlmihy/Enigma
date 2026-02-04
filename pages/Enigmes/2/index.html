@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -6,12 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enigme 2 - Le nombre mystère</title>
     <style>
-      /* Importation d'une police futuriste et lisible */
-      @import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;700&display=swap");
-
       body {
         background: radial-gradient(circle at top left, #060606, #000);
-        color: #00aeff;
+        color: #008cff;
         font-family: "Courier New", monospace;
         padding: 40px;
         overflow-x: hidden;
@@ -23,11 +19,11 @@
       }
 
       .container {
-        border: 2px solid #00aeff;
+        border: 2px solid #008cff;
         border-radius: 10px;
         padding: 30px;
         background-color: rgba(0, 0, 0, 0.85);
-        box-shadow: 0 0 20px #00aeff;
+        box-shadow: 0 0 20px #008cff;
         max-width: 800px;
         margin: auto;
         line-height: 1.6;
@@ -38,9 +34,9 @@
 
       h1 {
         margin-bottom: 15px;
-        color: #00aeff;
+        color: #008cff;
         font-weight: 700;
-        text-shadow: 0 0 5px #00aeff, 0 0 10px rgba(0, 255, 153, 0.7);
+        text-shadow: 0 0 5px #008cff, 0 0 10px rgba(0, 255, 153, 0.7);
       }
 
       p {
@@ -51,10 +47,10 @@
 
       input {
         background-color: rgba(0, 255, 153, 0.1);
-        border: 2px solid #00aeff;
+        border: 2px solid #008cff;
         border-radius: 5px;
         padding: 12px 20px;
-        color: #00aeff;
+        color: #008cff;
         font-family: "Courier New", monospace;
         font-size: 16px;
         width: 300px;
@@ -73,10 +69,10 @@
       button {
         margin-top: 15px;
         background-color: rgba(0, 255, 153, 0.2);
-        border: 2px solid #00aeff;
+        border: 2px solid #008cff;
         border-radius: 5px;
         padding: 12px 30px;
-        color: #00aeff;
+        color: #008cff;
         font-family: "Courier New", monospace;
         font-size: 16px;
         cursor: pointer;
@@ -100,8 +96,8 @@
         font-weight: bold;
         min-height: 1.5rem;
         transition: all 0.3s ease;
-        color: #00aeff;
-        text-shadow: 0 0 10px #00aeff;
+        color: #008cff;
+        text-shadow: 0 0 10px #008cff;
       }
 
       #result[style*="color: rgb(121, 255, 159)"] {
@@ -151,50 +147,3 @@
     </script>
   </body>
 </html>
-=======
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Enigme 2 - Le nombre mystère</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <div class="container">
-      <h1>Enigme 2</h1>
-      <p>Je suis un nombre à 3 chiffres.</p>
-      <p>Mon premier chiffre est 4.</p>
-      <p>La somme de mes chiffres vaut 17.</p>
-      <p>Je suis impair et plus petit que 460.</p>
-
-      <input type="number" id="answer" placeholder="Ton nombre ici" />
-      <br />
-      <button onclick="checkAnswer()">Vérifier</button>
-
-      <div id="result"></div>
-    </div>
-
-    <script>
-      function checkAnswer() {
-        const answer = document.getElementById("answer").value.trim();
-        const result = document.getElementById("result");
-
-        if (answer === "449") {
-          result.style.color = "#79ff9f";
-          result.innerHTML = "✅ Bravo ! 449 est la bonne réponse.";
-          setTimeout(() => {
-            window.location.href = "../3/index.html";
-          }, 1000);
-        } else if (answer === "") {
-          result.style.color = "#ffbaba";
-          result.innerHTML = "❗ Entre un nombre avant de valider.";
-        } else {
-          result.style.color = "#ff7676";
-          result.innerHTML = "❌ Mauvaise réponse, réfléchis bien...";
-        }
-      }
-    </script>
-  </body>
-</html>
->>>>>>> a93406fbce6dbc8ff0f40a4ce4a41df2c269861f
