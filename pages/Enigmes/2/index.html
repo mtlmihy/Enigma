@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -150,3 +151,50 @@
     </script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enigme 2 - Le nombre mystère</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enigme 2</h1>
+      <p>Je suis un nombre à 3 chiffres.</p>
+      <p>Mon premier chiffre est 4.</p>
+      <p>La somme de mes chiffres vaut 17.</p>
+      <p>Je suis impair et plus petit que 460.</p>
+
+      <input type="number" id="answer" placeholder="Ton nombre ici" />
+      <br />
+      <button onclick="checkAnswer()">Vérifier</button>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function checkAnswer() {
+        const answer = document.getElementById("answer").value.trim();
+        const result = document.getElementById("result");
+
+        if (answer === "449") {
+          result.style.color = "#79ff9f";
+          result.innerHTML = "✅ Bravo ! 449 est la bonne réponse.";
+          setTimeout(() => {
+            window.location.href = "../3/index.html";
+          }, 1000);
+        } else if (answer === "") {
+          result.style.color = "#ffbaba";
+          result.innerHTML = "❗ Entre un nombre avant de valider.";
+        } else {
+          result.style.color = "#ff7676";
+          result.innerHTML = "❌ Mauvaise réponse, réfléchis bien...";
+        }
+      }
+    </script>
+  </body>
+</html>
+>>>>>>> a93406fbce6dbc8ff0f40a4ce4a41df2c269861f
