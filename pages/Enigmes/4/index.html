@@ -69,7 +69,9 @@
         if (val1 === "BR" && val2 === "449" && val3 === "NE") {
           messageEl.textContent = "ACCÈS AUTORISÉ. BIENVENUE.";
           messageEl.className = "success";
-        } else {
+          window.location.href = "../5/index.html";}
+    
+        else {
           messageEl.textContent = "ACCÈS REFUSÉ. CODE INCORRECT.";
           messageEl.className = "error";
         }
