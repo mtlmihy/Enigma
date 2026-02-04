@@ -4,111 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enigme 2 - Le nombre mystère</title>
-    <style>
-      body {
-        background: radial-gradient(circle at top left, #060606, #000);
-        color: #008cff;
-        font-family: "Courier New", monospace;
-        padding: 40px;
-        overflow-x: hidden;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-      }
-
-      .container {
-        border: 2px solid #008cff;
-        border-radius: 10px;
-        padding: 30px;
-        background-color: rgba(0, 0, 0, 0.85);
-        box-shadow: 0 0 20px #008cff;
-        max-width: 800px;
-        margin: auto;
-        line-height: 1.6;
-        font-size: 16px;
-        color: #c2fcd3;
-        text-align: center;
-      }
-
-      h1 {
-        margin-bottom: 15px;
-        color: #008cff;
-        font-weight: 700;
-        text-shadow: 0 0 5px #008cff, 0 0 10px rgba(0, 255, 153, 0.7);
-      }
-
-      p {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
-        opacity: 0.9;
-      }
-
-      input {
-        background-color: rgba(0, 255, 153, 0.1);
-        border: 2px solid #008cff;
-        border-radius: 5px;
-        padding: 12px 20px;
-        color: #008cff;
-        font-family: "Courier New", monospace;
-        font-size: 16px;
-        width: 300px;
-        text-align: center;
-        outline: none;
-        transition: all 0.3s;
-        box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
-      }
-
-      input:focus {
-        background-color: rgba(0, 255, 153, 0.2);
-        box-shadow: 0 0 20px rgba(0, 255, 153, 0.6);
-        transform: scale(1.05);
-      }
-
-      button {
-        margin-top: 15px;
-        background-color: rgba(0, 255, 153, 0.2);
-        border: 2px solid #008cff;
-        border-radius: 5px;
-        padding: 12px 30px;
-        color: #008cff;
-        font-family: "Courier New", monospace;
-        font-size: 16px;
-        cursor: pointer;
-        transition: all 0.3s;
-        box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
-      }
-
-      button:hover {
-        background-color: rgba(0, 255, 153, 0.4);
-        box-shadow: 0 0 20px rgba(0, 255, 153, 0.8);
-        transform: translateY(-2px);
-      }
-
-      button:active {
-        transform: translateY(0);
-      }
-
-      #result {
-        margin-top: 20px;
-        font-size: 1.2rem;
-        font-weight: bold;
-        min-height: 1.5rem;
-        transition: all 0.3s ease;
-        color: #008cff;
-        text-shadow: 0 0 10px #008cff;
-      }
-
-      #result[style*="color: rgb(121, 255, 159)"] {
-        text-shadow: 0 0 8px #79ff9f;
-      }
-
-      #result[style*="color: rgb(255, 118, 118)"],
-      #result[style*="color: rgb(255, 186, 186)"] {
-        text-shadow: 0 0 8px #ff7676;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
@@ -117,7 +13,6 @@
       <p>Mon premier chiffre est 4.</p>
       <p>La somme de mes chiffres vaut 17.</p>
       <p>Je suis impair et plus petit que 460.</p>
-
       <input type="number" id="answer" placeholder="Ton nombre ici" />
       <br />
       <button onclick="checkAnswer()">Vérifier</button>
@@ -125,25 +20,7 @@
       <div id="result"></div>
     </div>
 
-    <script>
-      function checkAnswer() {
-        const answer = document.getElementById("answer").value.trim();
-        const result = document.getElementById("result");
-
-        if (answer === "449") {
-          result.style.color = "#79ff9f";
-          result.innerHTML = "✅ Bravo ! 449 est la bonne réponse.";
-          setTimeout(() => {
-            window.location.href = "../3/index.html";
-          }, 1000);
-        } else if (answer === "") {
-          result.style.color = "#ffbaba";
-          result.innerHTML = "❗ Entre un nombre avant de valider.";
-        } else {
-          result.style.color = "#ff7676";
-          result.innerHTML = "❌ Mauvaise réponse, réfléchis bien...";
-        }
-      }
-    </script>
+    <script src="main.js"></script>
+    
   </body>
 </html>

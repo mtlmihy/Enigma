@@ -1,0 +1,94 @@
+
+let startTime = Date.now();
+let timerInterval;
+const timerDisplay = document.getElementById("timer");
+
+function updateTimer() {
+  const elapsed = Date.now() - startTime;
+  const minutes = Math.floor(elapsed / 60000);
+  const seconds = Math.floor((elapsed % 60000) / 1000);
+  timerDisplay.textContent = ` ${String(minutes).padStart(
+    2,
+    "0"
+  )}:${String(seconds).padStart(2, "0")}`;
+}
+
+timerInterval = setInterval(updateTimer, 100);
+
+const texteOriginal = `LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT. SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT. DUIS AUTE IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR. EXCEPTEUR SINT OCCAECAT CUPIDATAT NON PROIDENT, SUNT IN CULPA QUI OFFICIA DESERUNT MOLLIT ANIM ID EST LABORUM. CURABITUR PRETIUM TINCIDUNT LACUS. NULLA GRAVIDA ORCI A ODIO. NULLAM VARIUS, TURPIS ET COMMODO PHARETRA, EST EROS BIBENDUM ELIT, NEC LUCTUS MAGNA FELIS SOLLICITUDIN MAURIS. INTEGER IN MAURIS EU NIBH EUISMOD GRAVIDA. DUIS AC TELLUS ET RISUS VULPUTATE VEHICULA. DONEC LOBORTIS RISUS A ELIT. ETIAM TEMPOR. UT ULLAMCORPER, LIGULA EU TEMPOR CONGUE, EROS EST EUISMOD TURPIS, ID TINCIDUNT SAPIEN RISUS A QUAM. MAECENAS FERMENTUM CONSEQUAT MI. DONEC FERMENTUM. PELLENTESQUE MALESUADA NULLA A MI. DUIS SAPIEN SEM, ALIQUET NEC, COMMODO EGET, CONSEQUAT QUIS, NEQUE. ALIQUAM FAUCIBUS, ELIT UT DICTUM ALIQUET, FELIS NISL ADIPISCING SAPIEN, SED MALESUADA DIAM LACUS EGET ERAT. CRAS MOLLIS SCELERISQUE NUNC. NULLAM ARCU. SED ID ODIO. ALIQUAM LOBORTIS. DONEC LOBORTIS, ERAT SED CURSUS PLACERAT, SAPIEN EROS TEMPOR ERAT, ET TEMPUS IPSUM SEM SED QUAM. VIVAMUS ELEMENTUM SEMPER NISI. AENEAN VULPUTATE ELEIFEND TELLUS. AENEAN LEO LIGULA, PORTTITOR EU, CONSEQUAT VITAE, ELEIFEND AC, ENIM. ALIQUAM LOREM ANTE, DAPIBUS IN, VIVERRA QUIS, FEUGIAT A, TELLUS. PHASELLUS VIVERRA NULLA UT METUS VARIUS LAOREET. QUISQUE RUTRUM. AENEAN IMPERDIET. ETIAM ULTRICIES NISI VEL AUGUE. CURABITUR ULLAMCORPER ULTRICIES NISI. NAM EGET DUI. ETIAM RHONCUS. MAECENAS TEMPUS, TELLUS EGET CONDIMENTUM RHONCUS, SEM QUAM SEMPER LIBERO, SIT AMET ADIPISCING SEM NEQUE SED IPSUM. NAM QUAM NUNC, BLANDIT VEL, LUCTUS PULVINAR, HENDRERIT ID, LOREM. MAECENAS NEC ODIO ET ANTE TINCIDUNT TEMPUS. DONEC VITAE SAPIEN UT LIBERO VENENATIS FAUCIBUS. NULLAM QUIS ANTE. ETIAM SIT AMET ORCI EGET EROS FAUCIBUS TINCIDUNT. DUIS LEO. SED FRINGILLA MAURIS SIT AMET NIBH. DONEC SODALES SAGITTIS MAGNA. SED CONSEQUAT, LEO EGET BIBENDUM SODALES, AUGUE VELIT CURSUS NUNC, QUIS GRAVIDA MAGNA MI A LIBERO. FUSCE VULPUTATE ELEIFEND SAPIEN. VESTIBULUM PURUS QUAM, SCELERISQUE UT, MOLLIS SED, NONUMMY ID, METUS. NULLAM ACCUMSAN LOREM IN DUIS BIBENDUM FELIS SED INTERDUM VENENATIS TURPIS ENIM BLANDIT MI.`;
+
+const textContainer = document.getElementById("text");
+
+let htmlContent = "";
+for (let i = 0; i < texteOriginal.length; i++) {
+  const char = texteOriginal[i];
+  if (char === "B" || char === "R") {
+    htmlContent += `<span class="br-letter">${char}</span>`;
+  } else {
+    htmlContent += char;
+  }
+}
+
+textContainer.innerHTML = htmlContent;
+
+const lettres = document.querySelectorAll(".br-letter");
+console.log("Nombre de lettres B/R trouvées:", lettres.length);
+
+lettres.forEach((lettre) => {
+  lettre.addEventListener("mouseenter", function () {
+    console.log("Survol détecté!");
+    lettres.forEach((el) => el.classList.add("highlight"));
+  });
+
+  lettre.addEventListener("mouseleave", function () {
+    lettres.forEach((el) => el.classList.remove("highlight"));
+  });
+});
+
+const answerInput = document.getElementById("answerInput");
+const submitBtn = document.getElementById("submitBtn");
+const errorMsg = document.getElementById("errorMsg");
+
+function checkAnswer() {
+  const answer = answerInput.value.trim().toUpperCase();
+
+  if (answer === "BR") {
+    clearInterval(timerInterval);
+
+    const finalTime = Date.now() - startTime;
+    const minutes = Math.floor(finalTime / 60000);
+    const seconds = Math.floor((finalTime % 60000) / 1000);
+
+    errorMsg.style.display = "none";
+    submitBtn.textContent = "✓ ACCÈS ACCORDÉ";
+    submitBtn.style.backgroundColor = "rgba(0, 255, 153, 0.6)";
+
+    timerDisplay.classList.add("solved");
+    timerDisplay.textContent = `✓ RÉSOLU EN ${String(minutes).padStart(
+      2,
+      "0"
+    )}:${String(seconds).padStart(2, "0")}`;
+
+    setTimeout(() => {
+      window.location.href = "../2/index.html";
+    }, 2000);
+  } else {
+    errorMsg.style.display = "block";
+    answerInput.style.borderColor = "#ff0066";
+    answerInput.style.boxShadow = "0 0 20px rgba(255, 0, 102, 0.6)";
+
+    setTimeout(() => {
+      errorMsg.style.display = "none";
+      answerInput.style.borderColor = "#00ff99";
+      answerInput.style.boxShadow = "0 0 10px rgba(0, 255, 153, 0.3)";
+    }, 2000);
+  }
+}
+
+submitBtn.addEventListener("click", checkAnswer);
+
+answerInput.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    checkAnswer();
+  }
+});
